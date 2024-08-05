@@ -1,6 +1,7 @@
 
-import { Facet as FacetController } from '@coveo/headless';
+import { Facet as FacetController, FacetSortCriterion } from '@coveo/headless';
 import { useEffect, useState, FunctionComponent } from 'react';
+import { FacetSearch } from '../components/FacetSearch';
 
 interface FacetProps {
   controller: FacetController;
@@ -22,9 +23,13 @@ const Facet: FunctionComponent<FacetProps> = (props) => {
     );
   }
 
-  return(
+  return (
     <div className="facet">
       <h3>{props.title}</h3>
+        <FacetSearch
+          controller={controller.facetSearch}
+          facetSearchState={state.facetSearch}
+        />
       <ul>
         {state.values.map((value) => (
           <li key={value.value}>
@@ -38,8 +43,26 @@ const Facet: FunctionComponent<FacetProps> = (props) => {
           </li>
         ))}
       </ul>
+      {state.canShowMoreValues && (
+        <button onClick={() => controller.showMoreValues()}>Show More</button>
+      )}
+      {state.canShowLessValues && (
+        <button onClick={() => controller.showLessValues()}>Show Less</button>
+      )}
+      <p>&nbsp;Sort by:&nbsp;</p>
+      <select
+        onChange={(e) =>
+          controller.sortBy(e.currentTarget.value as FacetSortCriterion)
+        }
+      defaultValue="score"
+      >
+        <option value="score">Score</option>
+        <option value="alphanumeric">Label</option>
+        <option value="occurrences">Occurrences</option>
+      </select>
     </div>
   );
+  
 }
 
 export default Facet;
