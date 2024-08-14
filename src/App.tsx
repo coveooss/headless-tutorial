@@ -4,7 +4,7 @@ import Facet from "./components/Facet";
 import ResultList from "./components/ResultList";
 import Pager from "./components/Pager";
 import DateFacet from "./components/DateFacet"
-import { pager as PagerController, resultList, dateFacet as dateFacetController  } from './controllers/controllers';
+import { pager as PagerController, dateFacet as DateFacetController  } from './controllers/controllers';
 
 import {
   searchBox as SearchBoxController,
@@ -37,7 +37,7 @@ function App() {
       <div className="main-section">
           <div className="facet-section column">
             <Facet controller={FacetController} title="Source" />
-            <DateFacet controller={dateFacetController} title="Date" />
+            <DateFacet controller={DateFacetController} title="Date" />
           </div>
           <div className="results-section column">
             <Sort controller={SortController} criteria={criteria}/>
