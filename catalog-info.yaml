@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: headless-tutorial
+
+  annotations:
+    github.com/project-slug: coveooss/headless-tutorial
+
+spec:
+  type: website
+  lifecycle: experimental
+  owner: dev-docs
