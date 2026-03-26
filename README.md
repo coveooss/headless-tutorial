@@ -6,7 +6,9 @@ This project was set up with [Vite](https://vitejs.dev/guide/#scaffolding-your-f
 
 ## Setup
 
-Vite requires `Node.js` version 18+ or 20+, please upgrade if warned by your package manager.
+This project requires `Node.js` version 20.9+ or 22.11+ (determined by [@coveo/headless](https://www.npmjs.com/package/@coveo/headless) and [Vite](https://vitejs.dev/)).
+
+We recommend using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to manage your Node.js version. Once installed, run `nvm use` in the project directory to switch to the correct version.
 
 Clone or download the project and run `npm install` in the project directory.
 

@@ -1,27 +1,27 @@
 import { SearchBox as SearchBoxController } from "@coveo/headless";
-import { useEffect, useState, FunctionComponent } from 'react';
+import { FunctionComponent, useEffect, useState } from "react";
 
 interface SearchBoxProps {
-  controller: SearchBoxController;
+	controller: SearchBoxController;
 }
 const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
-  const { controller } = props;
-  const [state, setState] = useState(controller.state);
+	const { controller } = props;
+	const [state, setState] = useState(controller.state);
 
-  useEffect(() => {
-    controller.subscribe(() => setState(controller.state));
-  }, [controller]);
+	useEffect(() => {
+		controller.subscribe(() => setState(controller.state));
+	}, [controller]);
 
-  return (
-    <div className="search-box">
-      <input
-        placeholder="Search..."
-        value={state.value}
-        onChange={(e) => controller.updateText(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && controller.submit()}
-      />
-    </div>
-  );
-}
+	return (
+		<div className="search-box">
+			<input
+				placeholder="Search..."
+				value={state.value}
+				onChange={(e) => controller.updateText(e.target.value)}
+				onKeyDown={(e) => e.key === "Enter" && controller.submit()}
+			/>
+		</div>
+	);
+};
 
 export default SearchBox;
